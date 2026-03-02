@@ -30,14 +30,6 @@ class EmailConfirmCustomerDataChangeRequestStrategy implements ConfirmCustomerDa
      */
     protected const GLOSSARY_KEY_INVALID_CUSTOMER_DATA_CHANGE_REQUEST = 'customer.data_change_request.invalid';
 
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Persistence\CustomerDataChangeRequestRepositoryInterface $customerDataChangeRequestRepository
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Persistence\CustomerDataChangeRequestEntityManagerInterface $customerDataChangeRequestEntityManager
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Logger\AuditLoggerInterface $auditLogger
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToGlossaryFacadeInterface $glossaryFacade
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Notifier\NotificationEmailSenderInterface $notificationEmailSender
-     */
     public function __construct(
         protected CustomerDataChangeRequestRepositoryInterface $customerDataChangeRequestRepository,
         protected CustomerDataChangeRequestEntityManagerInterface $customerDataChangeRequestEntityManager,
@@ -94,11 +86,6 @@ class EmailConfirmCustomerDataChangeRequestStrategy implements ConfirmCustomerDa
         return $customerDataChangeResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected function updateCustomerEmail(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerTransfer
     {
         $customerTransfer = $this->customerFacade->getCustomerByCriteria(
@@ -111,11 +98,6 @@ class EmailConfirmCustomerDataChangeRequestStrategy implements ConfirmCustomerDa
         return $customerTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer|null
-     */
     protected function findValidChangeRequest(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): ?CustomerDataChangeRequestTransfer
     {
         $customerDataChangeRequests = $this->customerDataChangeRequestRepository->get(
@@ -132,11 +114,6 @@ class EmailConfirmCustomerDataChangeRequestStrategy implements ConfirmCustomerDa
         return $customerDataChangeRequests->offsetExists(0) ? $customerDataChangeRequests->offsetGet(0) : null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return void
-     */
     protected function markCustomerDataChangeRequestAsCompleted(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): void
     {
         $this->customerDataChangeRequestEntityManager->saveEmailCustomerDataChangeRequest(

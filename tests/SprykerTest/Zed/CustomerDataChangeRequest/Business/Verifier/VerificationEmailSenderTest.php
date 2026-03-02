@@ -38,9 +38,6 @@ class VerificationEmailSenderTest extends Unit
      */
     protected CustomerDataChangeRequestBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testSendReturnsSuccessWhenEmailIsDifferent(): void
     {
         // Arrange
@@ -65,9 +62,6 @@ class VerificationEmailSenderTest extends Unit
         $this->assertTrue($response->getIsSent());
     }
 
-    /**
-     * @return void
-     */
     public function testSendReturnsFailureWhenEmailIsSame(): void
     {
         // Arrange
@@ -92,9 +86,6 @@ class VerificationEmailSenderTest extends Unit
         $this->assertFalse($response->getIsSent());
     }
 
-    /**
-     * @return void
-     */
     public function testSendReturnsFailureWhenCustomerNotFound(): void
     {
         // Arrange
@@ -118,15 +109,6 @@ class VerificationEmailSenderTest extends Unit
         $this->assertFalse($response->getIsSent());
     }
 
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Mail\CustomerDataChangeRequestMailSenderInterface $mailSender
-     * @param \Spryker\Zed\CustomerDataChangeRequest\CustomerDataChangeRequestConfig $config
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToUtilTextServiceInterface $utilTextService
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Writer\CustomerDataChangeRequestWriterInterface $writer
-     *
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Verifier\VerificationEmailSender
-     */
     protected function createVerificationEmailSender(
         CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade,
         CustomerDataChangeRequestMailSenderInterface $mailSender,

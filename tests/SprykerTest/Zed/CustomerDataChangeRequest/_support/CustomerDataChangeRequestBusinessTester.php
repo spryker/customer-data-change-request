@@ -59,9 +59,6 @@ class CustomerDataChangeRequestBusinessTester extends Actor
      */
     public const TEST_NON_EMAIL_TYPE = 'non-email-type';
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer
-     */
     public function createTestEmailChangeRequestTransfer(): CustomerDataChangeRequestTransfer
     {
         return (new CustomerDataChangeRequestTransfer())
@@ -71,18 +68,12 @@ class CustomerDataChangeRequestBusinessTester extends Actor
             ->setData(static::TEST_NEW_CUSTOMER_EMAIL);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer
-     */
     public function createTestNonEmailChangeRequestTransfer(): CustomerDataChangeRequestTransfer
     {
         return (new CustomerDataChangeRequestTransfer())
             ->setType(static::TEST_NON_EMAIL_TYPE);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createTestCustomerTransfer(): CustomerTransfer
     {
         return (new CustomerTransfer())
@@ -93,9 +84,6 @@ class CustomerDataChangeRequestBusinessTester extends Actor
             ->setSalutation('Mr');
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createTestCustomerTransferWithNewEmail(): CustomerTransfer
     {
         return (new CustomerTransfer())
@@ -103,18 +91,12 @@ class CustomerDataChangeRequestBusinessTester extends Actor
             ->setEmail(static::TEST_NEW_CUSTOMER_EMAIL);
     }
 
-    /**
-     * @return void
-     */
     public function ensureCustomerDataChangeRequestTableIsEmpty(): void
     {
         $this->getCustomerDataChangeRequestQuery()
             ->deleteAll();
     }
 
-    /**
-     * @return \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequestQuery
-     */
     protected function getCustomerDataChangeRequestQuery(): SpyCustomerDataChangeRequestQuery
     {
         return SpyCustomerDataChangeRequestQuery::create();

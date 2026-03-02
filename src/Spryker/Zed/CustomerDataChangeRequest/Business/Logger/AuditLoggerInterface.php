@@ -9,8 +9,5 @@ namespace Spryker\Zed\CustomerDataChangeRequest\Business\Logger;
 
 interface AuditLoggerInterface
 {
-    /**
-     * @return void
-     */
     public function addSuccessfulEmailUpdateAuditLog(): void;
 }

@@ -13,17 +13,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 
 interface CustomerDataChangeRequestToCustomerFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerCriteriaTransfer $customerCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
-     */
     public function getCustomerByCriteria(CustomerCriteriaTransfer $customerCriteriaTransfer): CustomerResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
-     */
     public function updateCustomer(CustomerTransfer $customerTransfer): CustomerResponseTransfer;
 }

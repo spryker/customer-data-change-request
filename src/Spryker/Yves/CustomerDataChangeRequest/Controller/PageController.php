@@ -32,11 +32,6 @@ class PageController extends AbstractController
      */
     protected const ROUTE_NAME_CUSTOMER_PROFILE = 'customer/profile';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function changeEmailAction(Request $request): RedirectResponse
     {
         $customerDataChangeRequestTransfer = new CustomerDataChangeRequestTransfer();

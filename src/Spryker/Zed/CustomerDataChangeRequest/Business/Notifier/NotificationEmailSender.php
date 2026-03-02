@@ -15,21 +15,12 @@ use Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestTo
 
 class NotificationEmailSender implements NotificationEmailSenderInterface
 {
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToMailFacadeInterface $mailFacade
-     * @param \Spryker\Zed\CustomerDataChangeRequest\CustomerDataChangeRequestConfig $customerDataChangeRequestConfig
-     */
     public function __construct(
         protected CustomerDataChangeRequestToMailFacadeInterface $mailFacade,
         protected CustomerDataChangeRequestConfig $customerDataChangeRequestConfig
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\VerificationTokenCustomerChangeDataResponseTransfer
-     */
     public function send(CustomerTransfer $customerTransfer): VerificationTokenCustomerChangeDataResponseTransfer
     {
         $verificationTokenCustomerChangeDataResponseTransfer = (new VerificationTokenCustomerChangeDataResponseTransfer())->setIsSent(false);

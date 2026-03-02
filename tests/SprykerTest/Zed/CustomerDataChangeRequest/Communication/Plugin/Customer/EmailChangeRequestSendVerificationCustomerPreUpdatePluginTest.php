@@ -36,9 +36,6 @@ class EmailChangeRequestSendVerificationCustomerPreUpdatePluginTest extends Unit
      */
     protected CustomerDataChangeRequestCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testPreUpdateReturnsCustomerTransferWhenChangeRequestExists(): void
     {
         // Arrange
@@ -57,9 +54,6 @@ class EmailChangeRequestSendVerificationCustomerPreUpdatePluginTest extends Unit
         $this->assertNull($resultCustomerTransfer->getMessage());
     }
 
-    /**
-     * @return void
-     */
     public function testPreUpdateSetsMessageWhenVerificationIsSent(): void
     {
         // Arrange
@@ -75,9 +69,6 @@ class EmailChangeRequestSendVerificationCustomerPreUpdatePluginTest extends Unit
         $this->assertSame('customer.change_customer_email_mail_sent', $resultCustomerTransfer->getMessage());
     }
 
-    /**
-     * @return void
-     */
     public function testPreUpdateDoesNotSetMessageWhenVerificationIsNotSent(): void
     {
         // Arrange
@@ -114,11 +105,6 @@ class EmailChangeRequestSendVerificationCustomerPreUpdatePluginTest extends Unit
         return $facadeMock;
     }
 
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\CustomerDataChangeRequestFacade $facade
-     *
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Communication\Plugin\Customer\EmailChangeRequestSendVerificationCustomerPreUpdatePlugin
-     */
     protected function createPluginWithFacade(CustomerDataChangeRequestFacade $facade): EmailChangeRequestSendVerificationCustomerPreUpdatePlugin
     {
         $plugin = new EmailChangeRequestSendVerificationCustomerPreUpdatePlugin();

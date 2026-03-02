@@ -47,17 +47,11 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Mail\CustomerDataChangeRequestMailSenderInterface
-     */
     public function createCustomerDataChangeRequestMailSender(): CustomerDataChangeRequestMailSenderInterface
     {
         return new CustomerDataChangeRequestMailSender($this->getMailFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Writer\CustomerDataChangeRequestWriterInterface
-     */
     public function createCustomerDataChangeRequestWriter(): CustomerDataChangeRequestWriterInterface
     {
         return new CustomerDataChangeRequestWriter(
@@ -67,9 +61,6 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Customer\Strategy\ConfirmCustomerDataChangeRequestStrategyInterface
-     */
     public function createEmailConfirmCustomerDataChangeRequestStrategy(): ConfirmCustomerDataChangeRequestStrategyInterface
     {
         return new EmailConfirmCustomerDataChangeRequestStrategy(
@@ -82,17 +73,11 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Logger\AuditLoggerInterface
-     */
     public function createAuditLogger(): AuditLoggerInterface
     {
         return new AuditLogger();
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Notifier\NotificationEmailSenderInterface
-     */
     public function createNotificationEmailSender(): NotificationEmailSenderInterface
     {
         return new NotificationEmailSender(
@@ -101,25 +86,16 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToCustomerFacadeInterface
-     */
     public function getCustomerFacade(): CustomerDataChangeRequestToCustomerFacadeInterface
     {
         return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::FACADE_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToMailFacadeInterface
-     */
     public function getMailFacade(): CustomerDataChangeRequestToMailFacadeInterface
     {
         return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::FACADE_MAIL);
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToUtilTextServiceInterface
-     */
     public function getUtilTextService(): CustomerDataChangeRequestToUtilTextServiceInterface
     {
         return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::SERVICE_UTIL_TEXT);
@@ -135,9 +111,6 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToGlossaryFacadeInterface
-     */
     public function getGlossaryFacade(): CustomerDataChangeRequestToGlossaryFacadeInterface
     {
         return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::FACADE_GLOSSARY);

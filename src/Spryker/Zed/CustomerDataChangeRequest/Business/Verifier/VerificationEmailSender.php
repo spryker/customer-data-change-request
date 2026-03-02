@@ -23,13 +23,6 @@ class VerificationEmailSender implements VerificationEmailSenderInterface
      */
     protected const VERIFICATION_TOKEN_LENGTH = 32;
 
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Mail\CustomerDataChangeRequestMailSenderInterface $customerDataChangeRequestMailSender
-     * @param \Spryker\Zed\CustomerDataChangeRequest\CustomerDataChangeRequestConfig $customerDataChangeRequestConfig
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToUtilTextServiceInterface $utilTextService
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Writer\CustomerDataChangeRequestWriterInterface $customerDataChangeRequestWriter
-     */
     public function __construct(
         protected CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade,
         protected CustomerDataChangeRequestMailSenderInterface $customerDataChangeRequestMailSender,
@@ -39,11 +32,6 @@ class VerificationEmailSender implements VerificationEmailSenderInterface
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\VerificationTokenCustomerChangeDataResponseTransfer
-     */
     public function send(CustomerTransfer $customerTransfer): VerificationTokenCustomerChangeDataResponseTransfer
     {
         $verificationTokenCustomerChangeDataResponseTransfer = (new VerificationTokenCustomerChangeDataResponseTransfer())->setIsSent(false);
@@ -73,9 +61,6 @@ class VerificationEmailSender implements VerificationEmailSenderInterface
         return $verificationTokenCustomerChangeDataResponseTransfer->setIsSent(true);
     }
 
-    /**
-     * @return string
-     */
     protected function generateKey(): string
     {
         return $this->utilTextService->generateRandomString(static::VERIFICATION_TOKEN_LENGTH);

@@ -9,10 +9,5 @@ namespace Spryker\Zed\CustomerDataChangeRequest\Dependency;
 
 interface CustomerDataChangeRequestToUtilTextServiceInterface
 {
-    /**
-     * @param int $length
-     *
-     * @return string
-     */
     public function generateRandomString(int $length): string;
 }

@@ -16,9 +16,6 @@ use Spryker\Client\Kernel\AbstractFactory;
  */
 class CustomerDataChangeRequestFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\CustomerDataChangeRequest\Zed\CustomerDataChangeRequestStubInterface
-     */
     public function createZedCustomerDataChangeRequestStub(): CustomerDataChangeRequestStubInterface
     {
         return new CustomerDataChangeRequestStub($this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::CLIENT_ZED_REQUEST));

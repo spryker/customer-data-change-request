@@ -41,9 +41,6 @@ class EmailConfirmCustomerDataChangeRequestStrategyTest extends Unit
      */
     protected CustomerDataChangeRequestBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testIsApplicableReturnsTrueForEmailType(): void
     {
         // Arrange
@@ -64,9 +61,6 @@ class EmailConfirmCustomerDataChangeRequestStrategyTest extends Unit
         $this->assertTrue($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsApplicableReturnsFalseForNonEmailType(): void
     {
         // Arrange
@@ -87,9 +81,6 @@ class EmailConfirmCustomerDataChangeRequestStrategyTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteReturnsErrorForInvalidRequest(): void
     {
         // Arrange
@@ -117,9 +108,6 @@ class EmailConfirmCustomerDataChangeRequestStrategyTest extends Unit
         $this->assertSame('Invalid request', $response->getErrors()->offsetGet(0)->getMessage());
     }
 
-    /**
-     * @return void
-     */
     public function testExecuteUpdatesCustomerAndMarksRequestAsCompleted(): void
     {
         // Arrange
@@ -161,16 +149,6 @@ class EmailConfirmCustomerDataChangeRequestStrategyTest extends Unit
         $this->assertEmpty($response->getErrors());
     }
 
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Persistence\CustomerDataChangeRequestRepositoryInterface $repositoryMock
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Persistence\CustomerDataChangeRequestEntityManagerInterface $entityManagerMock
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToCustomerFacadeInterface $customerFacadeMock
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Logger\AuditLoggerInterface $auditLoggerMock
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToGlossaryFacadeInterface $glossaryFacadeMock
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Business\Notifier\NotificationEmailSenderInterface $notificationEmailSenderMock
-     *
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Business\Customer\Strategy\EmailConfirmCustomerDataChangeRequestStrategy
-     */
     protected function createStrategy(
         CustomerDataChangeRequestRepositoryInterface $repositoryMock,
         CustomerDataChangeRequestEntityManagerInterface $entityManagerMock,

@@ -28,9 +28,6 @@ class AuditLogger implements AuditLoggerInterface
      */
     protected const AUDIT_LOGGER_RECORD_KEY_CONTEXT_TAGS = 'tags';
 
-    /**
-     * @return void
-     */
     public function addSuccessfulEmailUpdateAuditLog(): void
     {
         $this->getAuditLogger(

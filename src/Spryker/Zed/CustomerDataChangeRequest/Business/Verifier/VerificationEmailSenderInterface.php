@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\VerificationTokenCustomerChangeDataResponseTransfe
 
 interface VerificationEmailSenderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\VerificationTokenCustomerChangeDataResponseTransfer
-     */
     public function send(CustomerTransfer $customerTransfer): VerificationTokenCustomerChangeDataResponseTransfer;
 }

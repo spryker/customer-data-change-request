@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CustomerDataChangeRequestTransfer;
 
 interface CustomerDataChangeRequestEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer
-     */
     public function saveEmailCustomerDataChangeRequest(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeRequestTransfer;
 }

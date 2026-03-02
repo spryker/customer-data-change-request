@@ -42,25 +42,16 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
         $this->addMinutesParameter();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'CustomerEmailChangeRequestWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@CustomerDataChangeRequest/views/customer-email-change-request/customer-email-change-request.twig';
     }
 
-    /**
-     * @return void
-     */
     protected function addIsChangeRequestActiveParameter(): void
     {
         $pendingCustomerDataChangeRequestData = $this->getPendingCustomerDataChangeRequestData();
@@ -71,9 +62,6 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @return void
-     */
     protected function addEmailParameter(): void
     {
         $pendingCustomerDataChangeRequestData = $this->getPendingCustomerDataChangeRequestData();
@@ -84,9 +72,6 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @return void
-     */
     protected function addMinutesParameter(): void
     {
         $this->addParameter(
@@ -95,9 +80,6 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @return string|null
-     */
     protected function getPendingCustomerDataChangeRequestData(): ?string
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->findCustomerRawData();

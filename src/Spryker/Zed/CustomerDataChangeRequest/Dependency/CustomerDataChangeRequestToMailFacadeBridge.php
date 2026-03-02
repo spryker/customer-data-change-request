@@ -24,11 +24,6 @@ class CustomerDataChangeRequestToMailFacadeBridge implements CustomerDataChangeR
         $this->mailFacade = $mailFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MailTransfer $mailTransfer
-     *
-     * @return void
-     */
     public function handleMail(MailTransfer $mailTransfer): void
     {
         $this->mailFacade->handleMail($mailTransfer);

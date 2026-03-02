@@ -15,18 +15,10 @@ use Spryker\Client\ZedRequest\ZedRequestClient;
 
 class CustomerDataChangeRequestStub implements CustomerDataChangeRequestStubInterface
 {
-    /**
-     * @param \Spryker\Client\ZedRequest\ZedRequestClient $zedStub
-     */
     public function __construct(protected ZedRequestClient $zedStub)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeResponseTransfer
-     */
     public function changeCustomerData(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\CustomerDataChangeResponseTransfer $customerDataChangeResponseTransfer */
@@ -35,11 +27,6 @@ class CustomerDataChangeRequestStub implements CustomerDataChangeRequestStubInte
         return $customerDataChangeResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestCollectionTransfer
-     */
     public function getCustomerDataChangeRequestCollection(
         CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
     ): CustomerDataChangeRequestCollectionTransfer {

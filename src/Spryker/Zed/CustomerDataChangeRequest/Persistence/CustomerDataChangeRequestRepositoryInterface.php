@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer;
 
 interface CustomerDataChangeRequestRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestCollectionTransfer
-     */
     public function get(CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer): CustomerDataChangeRequestCollectionTransfer;
 }

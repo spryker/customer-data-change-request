@@ -14,20 +14,11 @@ use Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestTo
 
 class CustomerDataChangeRequestMailSender implements CustomerDataChangeRequestMailSenderInterface
 {
-    /**
-     * @param \Spryker\Zed\CustomerDataChangeRequest\Dependency\CustomerDataChangeRequestToMailFacadeInterface $mailFacade
-     */
     public function __construct(
         protected CustomerDataChangeRequestToMailFacadeInterface $mailFacade
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param string $verificationLink
-     *
-     * @return void
-     */
     public function sendEmailChangeVerificationToken(CustomerTransfer $customerTransfer, string $verificationLink): void
     {
         $mailTransfer = new MailTransfer();

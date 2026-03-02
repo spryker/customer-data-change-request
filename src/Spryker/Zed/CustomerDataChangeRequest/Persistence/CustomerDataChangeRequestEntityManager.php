@@ -15,11 +15,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class CustomerDataChangeRequestEntityManager extends AbstractEntityManager implements CustomerDataChangeRequestEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer
-     */
     public function saveEmailCustomerDataChangeRequest(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeRequestTransfer
     {
         $customerDataChangeRequestEntity = $this->getFactory()

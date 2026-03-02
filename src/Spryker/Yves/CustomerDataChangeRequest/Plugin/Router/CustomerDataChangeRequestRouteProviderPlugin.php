@@ -54,11 +54,6 @@ class CustomerDataChangeRequestRouteProviderPlugin extends AbstractRouteProvider
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addChangeEmailRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute(

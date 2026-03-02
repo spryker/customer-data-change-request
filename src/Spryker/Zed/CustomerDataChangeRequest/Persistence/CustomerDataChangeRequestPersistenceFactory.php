@@ -18,17 +18,11 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class CustomerDataChangeRequestPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequestQuery
-     */
     public function createCustomerDataChangeRequestQuery(): SpyCustomerDataChangeRequestQuery
     {
         return SpyCustomerDataChangeRequestQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\CustomerDataChangeRequest\Persistence\Propel\Mapper\CustomerDataChangeRequestMapper
-     */
     public function createCustomerDataChangeRequestMapper(): CustomerDataChangeRequestMapper
     {
         return new CustomerDataChangeRequestMapper();

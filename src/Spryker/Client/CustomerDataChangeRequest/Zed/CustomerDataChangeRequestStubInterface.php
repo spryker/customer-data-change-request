@@ -14,18 +14,8 @@ use Generated\Shared\Transfer\CustomerDataChangeResponseTransfer;
 
 interface CustomerDataChangeRequestStubInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeResponseTransfer
-     */
     public function changeCustomerData(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestCollectionTransfer
-     */
     public function getCustomerDataChangeRequestCollection(
         CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
     ): CustomerDataChangeRequestCollectionTransfer;

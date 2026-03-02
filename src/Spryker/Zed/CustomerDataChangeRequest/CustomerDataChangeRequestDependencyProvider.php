@@ -39,11 +39,6 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
      */
     public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addCustomerFacade($container);
@@ -54,11 +49,6 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCustomerFacade(Container $container): Container
     {
         $container->set(static::FACADE_CUSTOMER, function (Container $container) {
@@ -68,11 +58,6 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMailFacade(Container $container): Container
     {
         $container->set(static::FACADE_MAIL, function (Container $container) {
@@ -82,11 +67,6 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addGlossaryFacade(Container $container): Container
     {
         $container->set(static::FACADE_GLOSSARY, function (Container $container) {
@@ -98,11 +78,6 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilTextService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {

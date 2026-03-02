@@ -26,21 +26,11 @@ class CustomerDataChangeRequestToCustomerFacadeBridge implements CustomerDataCha
         $this->customerFacade = $customerFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerCriteriaTransfer $customerCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
-     */
     public function getCustomerByCriteria(CustomerCriteriaTransfer $customerCriteriaTransfer): CustomerResponseTransfer
     {
         return $this->customerFacade->getCustomerByCriteria($customerCriteriaTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
-     */
     public function updateCustomer(CustomerTransfer $customerTransfer): CustomerResponseTransfer
     {
         return $this->customerFacade->updateCustomer($customerTransfer);

@@ -52,9 +52,6 @@ class CustomerDataChangeRequestCommunicationTester extends Actor
      */
     public const TEST_CUSTOMER_ID = 1;
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createTestCustomerTransfer(): CustomerTransfer
     {
         return (new CustomerTransfer())
@@ -62,9 +59,6 @@ class CustomerDataChangeRequestCommunicationTester extends Actor
             ->setEmail(static::TEST_CUSTOMER_EMAIL);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createTestCustomerTransferWithNewEmail(): CustomerTransfer
     {
         return (new CustomerTransfer())

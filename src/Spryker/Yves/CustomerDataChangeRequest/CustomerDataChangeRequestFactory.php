@@ -15,9 +15,6 @@ use Spryker\Yves\Kernel\AbstractFactory;
  */
 class CustomerDataChangeRequestFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Yves\CustomerDataChangeRequest\Dependency\Client\CustomerDataChangeRequestToCustomerClientInterface
-     */
     public function getCustomerClient(): CustomerDataChangeRequestToCustomerClientInterface
     {
         return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::CLIENT_CUSTOMER);

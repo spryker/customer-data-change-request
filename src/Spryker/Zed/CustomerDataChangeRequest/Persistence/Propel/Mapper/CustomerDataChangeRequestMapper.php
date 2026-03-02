@@ -15,12 +15,6 @@ use Propel\Runtime\Collection\Collection;
 
 class CustomerDataChangeRequestMapper
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     * @param \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequest $customerDataChangeRequestEntity
-     *
-     * @return \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequest
-     */
     public function mapCustomerDataChangeRequestTransferToCustomerDataChangeRequestEntity(
         CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer,
         SpyCustomerDataChangeRequest $customerDataChangeRequestEntity
@@ -39,12 +33,6 @@ class CustomerDataChangeRequestMapper
         return $customerDataChangeRequestEntity;
     }
 
-    /**
-     * @param \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequest $customerDataChangeRequestEntity
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer
-     */
     public function mapCustomerDataChangeRequestEntityToCustomerDataChangeRequestTransfer(
         SpyCustomerDataChangeRequest $customerDataChangeRequestEntity,
         CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer

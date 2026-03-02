@@ -32,12 +32,6 @@ class CustomerDataChangeRequestWriter implements CustomerDataChangeRequestWriter
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param string $verificationToken
-     *
-     * @return void
-     */
     public function saveEmailChangeRequest(CustomerTransfer $customerTransfer, string $verificationToken): void
     {
         $customerDataChangeRequestCollectionTransfer = $this->customerDataChangeRequestRepository->get(
@@ -66,11 +60,6 @@ class CustomerDataChangeRequestWriter implements CustomerDataChangeRequestWriter
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeResponseTransfer
-     */
     public function changeCustomerData(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeResponseTransfer
     {
         foreach ($this->customerDataChangeRequestStrategies as $customerDataChangeRequestStrategy) {

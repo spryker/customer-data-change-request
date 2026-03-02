@@ -28,11 +28,6 @@ class CustomerDataChangeRequestRepository extends AbstractRepository implements 
      */
     protected const DATE_FORMAT_MINUTES = '-%d minutes';
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestCollectionTransfer
-     */
     public function get(CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer): CustomerDataChangeRequestCollectionTransfer
     {
         $customerDataChangeRequestQuery = $this->getFactory()->createCustomerDataChangeRequestQuery();
@@ -44,12 +39,6 @@ class CustomerDataChangeRequestRepository extends AbstractRepository implements 
             ->mapCustomerDataChangeRequestCollectionToCustomerDataChangeRequestCollectionTransfer($customerDataChangeRequestQuery->find(), new CustomerDataChangeRequestCollectionTransfer());
     }
 
-    /**
-     * @param \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequestQuery $customerDataChangeRequestQuery
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $changeRequestCriteriaTransfer
-     *
-     * @return \Orm\Zed\CustomerDataChangeRequest\Persistence\SpyCustomerDataChangeRequestQuery
-     */
     protected function applyFilters(
         SpyCustomerDataChangeRequestQuery $customerDataChangeRequestQuery,
         CustomerDataChangeRequestCriteriaTransfer $changeRequestCriteriaTransfer

@@ -20,21 +20,11 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
  */
 class GatewayController extends AbstractGatewayController
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeResponseTransfer
-     */
     public function changeCustomerDataAction(CustomerDataChangeRequestTransfer $customerDataChangeRequestTransfer): CustomerDataChangeResponseTransfer
     {
         return $this->getFacade()->changeCustomerData($customerDataChangeRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerDataChangeRequestCollectionTransfer
-     */
     public function getCustomerDataChangeRequestCollectionAction(
         CustomerDataChangeRequestCriteriaTransfer $customerDataChangeRequestCriteriaTransfer
     ): CustomerDataChangeRequestCollectionTransfer {

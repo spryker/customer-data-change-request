@@ -24,17 +24,11 @@ class CustomerDataChangeRequestToCustomerClientBridge implements CustomerDataCha
         $this->customerClient = $customerClient;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer|null
-     */
     public function findCustomerRawData(): ?CustomerTransfer
     {
         return $this->customerClient->findCustomerRawData();
     }
 
-    /**
-     * @return void
-     */
     public function markCustomerAsDirty(): void
     {
         $this->customerClient->markCustomerAsDirty();
