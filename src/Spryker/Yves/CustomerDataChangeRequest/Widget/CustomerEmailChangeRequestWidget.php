@@ -37,8 +37,9 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addIsChangeRequestActiveParameter();
-        $this->addEmailParameter();
+        $pendingData = $this->getPendingCustomerDataChangeRequestData();
+        $this->addIsChangeRequestActiveParameter($pendingData);
+        $this->addEmailParameter($pendingData);
         $this->addMinutesParameter();
     }
 
@@ -52,23 +53,19 @@ class CustomerEmailChangeRequestWidget extends AbstractWidget
         return '@CustomerDataChangeRequest/views/customer-email-change-request/customer-email-change-request.twig';
     }
 
-    protected function addIsChangeRequestActiveParameter(): void
+    protected function addIsChangeRequestActiveParameter(?string $pendingData): void
     {
-        $pendingCustomerDataChangeRequestData = $this->getPendingCustomerDataChangeRequestData();
-
         $this->addParameter(
             static::PARAMETER_IS_CHANGE_REQUEST_ACTIVE_NAME,
-            $pendingCustomerDataChangeRequestData !== null,
+            $pendingData !== null,
         );
     }
 
-    protected function addEmailParameter(): void
+    protected function addEmailParameter(?string $pendingData): void
     {
-        $pendingCustomerDataChangeRequestData = $this->getPendingCustomerDataChangeRequestData();
-
         $this->addParameter(
             static::PARAMETER_EMAIL_NAME,
-            $pendingCustomerDataChangeRequestData ?? null,
+            $pendingData,
         );
     }
 
