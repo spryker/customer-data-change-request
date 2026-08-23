@@ -110,7 +110,6 @@ class EmailChangeRequestSendVerificationCustomerPreUpdatePluginTest extends Unit
         $plugin = new EmailChangeRequestSendVerificationCustomerPreUpdatePlugin();
         $reflection = new ReflectionClass($plugin);
         $property = $reflection->getProperty('facade');
-        $property->setAccessible(true);
         $property->setValue($plugin, $facade);
 
         return $plugin;
