@@ -10,6 +10,7 @@
         <property name="message" type="string"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>
+        <property name="messageType" type="string"/>
     </transfer>
 
     <transfer name="CustomerDataChangeRequestCollection" strict="true">
@@ -35,6 +36,7 @@
 
     <transfer name="VerificationTokenCustomerChangeDataResponse" strict="true">
         <property name="isSent" type="bool"/>
+        <property name="isLimitExceeded" type="bool"/>
     </transfer>
 
     <transfer name="Mail">
@@ -82,6 +84,16 @@
     </transfer>
 
     <transfer name="Locale">
+    </transfer>
+
+    <transfer name="SecurityCheckAttemptContext" strict="true">
+        <property name="type" type="string"/>
+        <property name="identifier" type="string"/>
+        <property name="ttl" type="int"/>
+    </transfer>
+
+    <transfer name="SecurityCheckAttemptResponse" strict="true">
+        <property name="numberOfAttempts" type="int"/>
     </transfer>
 
     <transfer name="AuditLoggerConfigCriteria" strict="true">

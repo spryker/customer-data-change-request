@@ -39,12 +39,15 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
      */
     public const SERVICE_UTIL_TEXT = 'SERVICE_UTIL_TEXT';
 
+    public const string CLIENT_SECURITY_BLOCKER = 'CLIENT_SECURITY_BLOCKER';
+
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addCustomerFacade($container);
         $container = $this->addMailFacade($container);
         $container = $this->addGlossaryFacade($container);
         $container = $this->addUtilTextService($container);
+        $container = $this->addSecurityBlockerClient($container);
 
         return $container;
     }
@@ -82,6 +85,15 @@ class CustomerDataChangeRequestDependencyProvider extends AbstractBundleDependen
     {
         $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
             return new CustomerDataChangeRequestToUtilTextServiceBridge($container->getLocator()->utilText()->service());
+        });
+
+        return $container;
+    }
+
+    protected function addSecurityBlockerClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_SECURITY_BLOCKER, function (Container $container) {
+            return $container->getLocator()->securityBlocker()->client();
         });
 
         return $container;

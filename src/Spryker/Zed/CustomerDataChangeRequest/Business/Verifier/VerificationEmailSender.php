@@ -10,6 +10,7 @@ namespace Spryker\Zed\CustomerDataChangeRequest\Business\Verifier;
 use Generated\Shared\Transfer\CustomerCriteriaTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\VerificationTokenCustomerChangeDataResponseTransfer;
+use Spryker\Zed\CustomerDataChangeRequest\Business\Limiter\EmailChangeRequestLimiterInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Mail\CustomerDataChangeRequestMailSenderInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Writer\CustomerDataChangeRequestWriterInterface;
 use Spryker\Zed\CustomerDataChangeRequest\CustomerDataChangeRequestConfig;
@@ -23,12 +24,17 @@ class VerificationEmailSender implements VerificationEmailSenderInterface
      */
     protected const VERIFICATION_TOKEN_LENGTH = 32;
 
+    protected const string GLOSSARY_KEY_EMAIL_CHANGE_LIMIT_EXCEEDED = 'customer.change_customer_email_limit_exceeded';
+
+    protected const string MESSAGE_TYPE_ERROR = 'error';
+
     public function __construct(
         protected CustomerDataChangeRequestToCustomerFacadeInterface $customerFacade,
         protected CustomerDataChangeRequestMailSenderInterface $customerDataChangeRequestMailSender,
         protected CustomerDataChangeRequestConfig $customerDataChangeRequestConfig,
         protected CustomerDataChangeRequestToUtilTextServiceInterface $utilTextService,
-        protected CustomerDataChangeRequestWriterInterface $customerDataChangeRequestWriter
+        protected CustomerDataChangeRequestWriterInterface $customerDataChangeRequestWriter,
+        protected EmailChangeRequestLimiterInterface $emailChangeRequestLimiter
     ) {
     }
 
@@ -45,6 +51,15 @@ class VerificationEmailSender implements VerificationEmailSenderInterface
             $customerTransfer->getEmail() === $customerResponseTransfer->getCustomerTransfer()->getEmail()
         ) {
             return $verificationTokenCustomerChangeDataResponseTransfer;
+        }
+
+        if (!$this->emailChangeRequestLimiter->reserveRequest($customerTransfer)) {
+            $customerTransfer
+                ->setEmail($customerResponseTransfer->getCustomerTransfer()->getEmail())
+                ->setMessage(static::GLOSSARY_KEY_EMAIL_CHANGE_LIMIT_EXCEEDED)
+                ->setMessageType(static::MESSAGE_TYPE_ERROR);
+
+            return $verificationTokenCustomerChangeDataResponseTransfer->setIsLimitExceeded(true);
         }
 
         $verificationToken = $this->generateKey();

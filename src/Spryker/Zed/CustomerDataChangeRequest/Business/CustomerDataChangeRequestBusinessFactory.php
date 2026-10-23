@@ -7,8 +7,11 @@
 
 namespace Spryker\Zed\CustomerDataChangeRequest\Business;
 
+use Spryker\Client\SecurityBlocker\SecurityBlockerClientInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Customer\Strategy\ConfirmCustomerDataChangeRequestStrategyInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Customer\Strategy\EmailConfirmCustomerDataChangeRequestStrategy;
+use Spryker\Zed\CustomerDataChangeRequest\Business\Limiter\EmailChangeRequestLimiter;
+use Spryker\Zed\CustomerDataChangeRequest\Business\Limiter\EmailChangeRequestLimiterInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Logger\AuditLogger;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Logger\AuditLoggerInterface;
 use Spryker\Zed\CustomerDataChangeRequest\Business\Mail\CustomerDataChangeRequestMailSender;
@@ -44,6 +47,15 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
             $this->getConfig(),
             $this->getUtilTextService(),
             $this->createCustomerDataChangeRequestWriter(),
+            $this->createEmailChangeRequestLimiter(),
+        );
+    }
+
+    public function createEmailChangeRequestLimiter(): EmailChangeRequestLimiterInterface
+    {
+        return new EmailChangeRequestLimiter(
+            $this->getSecurityBlockerClient(),
+            $this->getConfig(),
         );
     }
 
@@ -109,6 +121,11 @@ class CustomerDataChangeRequestBusinessFactory extends AbstractBusinessFactory
         return [
             $this->createEmailConfirmCustomerDataChangeRequestStrategy(),
         ];
+    }
+
+    public function getSecurityBlockerClient(): SecurityBlockerClientInterface
+    {
+        return $this->getProvidedDependency(CustomerDataChangeRequestDependencyProvider::CLIENT_SECURITY_BLOCKER);
     }
 
     public function getGlossaryFacade(): CustomerDataChangeRequestToGlossaryFacadeInterface

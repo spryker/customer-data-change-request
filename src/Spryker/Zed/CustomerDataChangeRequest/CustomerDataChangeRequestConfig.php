@@ -45,6 +45,36 @@ class CustomerDataChangeRequestConfig extends AbstractBundleConfig
      */
     protected const EMAIL_CHANGE_TOKEN_URL_WITHOUT_STORE = '/customer-data-change-request/change-email?verification_token=%s';
 
+    protected const int EMAIL_CHANGE_REQUEST_LIMIT = 3;
+
+    protected const int EMAIL_CHANGE_REQUEST_LIMIT_TTL_SECONDS = 900;
+
+    /**
+     * Specification:
+     * - Returns the maximum number of email change requests per customer and per target email in one fixed window.
+     * - The window starts at the first request and ends after `getEmailChangeRequestLimitTtl()` seconds, so up to two times the limit is possible around the end of a window.
+     * - The counter of a target email is shared by all customers.
+     * - Returns `0` when no limit is applied. A negative value also disables the limit.
+     *
+     * @api
+     */
+    public function getEmailChangeRequestLimit(): int
+    {
+        return static::EMAIL_CHANGE_REQUEST_LIMIT;
+    }
+
+    /**
+     * Specification:
+     * - Returns the length of the email change request limit window in seconds, counted from the first request in the window.
+     * - A value below `60` is raised to `60` seconds by `SecurityBlockerClient::incrementAttemptCount()`.
+     *
+     * @api
+     */
+    public function getEmailChangeRequestLimitTtl(): int
+    {
+        return static::EMAIL_CHANGE_REQUEST_LIMIT_TTL_SECONDS;
+    }
+
     /**
      * Specification:
      * - Returns the expiration time in minutes for the email change verification token.
@@ -52,8 +82,6 @@ class CustomerDataChangeRequestConfig extends AbstractBundleConfig
      * @api
      *
      * @uses \Spryker\Shared\CustomerDataChangeRequest\CustomerDataChangeRequestConfig::getEmailChangeVerificationExpirationMinutes()
-     *
-     * @return int
      */
     public function getEmailChangeVerificationExpirationMinutes(): int
     {
@@ -65,11 +93,6 @@ class CustomerDataChangeRequestConfig extends AbstractBundleConfig
      * - Provides a email change token url.
      *
      * @api
-     *
-     * @param string $token
-     * @param string|null $storeName
-     *
-     * @return string
      */
     public function getEmailChaneTokenUrl(string $token, ?string $storeName = null): string
     {
@@ -82,8 +105,6 @@ class CustomerDataChangeRequestConfig extends AbstractBundleConfig
 
     /**
      * @api
-     *
-     * @return string
      */
     protected function getHostYves(): string
     {

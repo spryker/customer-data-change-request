@@ -20,6 +20,8 @@ suites:
                 - Asserts
                 - \SprykerTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\DependencyProviderHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
     Communication:
         path: Communication
